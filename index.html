@@ -527,6 +527,9 @@ section[id]{scroll-margin-top:80px}
 }
 @media (max-width:420px){.vid{padding:8px 14px 8px 8px;font-size:14px}.vid .pdot{width:26px;height:26px}}
 @media (prefers-reduced-motion:reduce){.vid{animation:none}}
+
+html,body{overflow-x:clip}
+#problema,.how{overflow-x:clip}
 </style>
 </head>
 <body>
@@ -710,6 +713,7 @@ section[id]{scroll-margin-top:80px}
         <span class="yt-prog"><i></i></span>
       </button>
     </div>
+    <p class="yt-alt">O vídeo não carregou? <a href="https://www.youtube.com/watch?v=B_OLknzdVPE" target="_blank" rel="noopener">Assistir no YouTube<span class="sr"> (abre em nova aba)</span></a></p>
   </div>
 </section>
 
@@ -808,10 +812,11 @@ section[id]{scroll-margin-top:80px}
     var old=box.querySelector("iframe");
     if(old&&t==null)return;
     var f=document.createElement("iframe");
-    f.src="https://www.youtube-nocookie.com/embed/"+id+"?autoplay=1&rel=0&modestbranding=1"+(t?"&start="+t:"");
+    f.src="https://www.youtube.com/embed/"+id+"?autoplay=1&rel=0&modestbranding=1"+(t?"&start="+t:"");
     f.title="Demonstração da Despensa Automatizada";
     f.allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
     f.allowFullscreen=true;
+    f.referrerPolicy="strict-origin-when-cross-origin";
     box.innerHTML="";box.appendChild(f);
   }
   var poster=box&&box.querySelector(".yt-poster"), th=box&&box.querySelector(".yt-thumb");
